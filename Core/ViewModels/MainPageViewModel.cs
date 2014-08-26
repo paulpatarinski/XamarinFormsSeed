@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.XamForms.UserDialogs;
 using Core.Services;
@@ -15,7 +13,7 @@ namespace Core.ViewModels
       _dialogService = dialogService;
       _sampleService = sampleService;
 
-      LoadDefaultMessageAsync();
+      LoadMessageAsync();
     }
 
     readonly IUserDialogService _dialogService;
@@ -37,27 +35,18 @@ namespace Core.ViewModels
 
     public async Task RefreshAsync()
     {
-      var cancelSrc = new CancellationTokenSource();
-
-      using (var dlg = _dialogService.Loading("Loading"))
-      {
-        dlg.SetCancel(cancelSrc.Cancel);
-
-        try
-        {
-          await Task.Delay(TimeSpan.FromSeconds(5), cancelSrc.Token);
-        }
-        catch
-        {
-        }
-      }
-
-      Message = (cancelSrc.IsCancellationRequested ? "Loading Cancelled" : "Loading Complete");
+      await LoadMessageAsync();
     }
 
-    public async Task LoadDefaultMessageAsync()
+    public async Task LoadMessageAsync()
     {
-      Message = await _sampleService.GetMessageAsync();
+      _dialogService.ShowLoading("Getting data from Server...");
+
+      var model =  await _sampleService.GetMessageAsync();
+
+      _dialogService.HideLoading();
+
+      Message = model.Message;
     }
   }
 }

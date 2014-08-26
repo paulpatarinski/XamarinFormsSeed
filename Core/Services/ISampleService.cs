@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using Core.Models;
 
 namespace Core.Services
 {
   public interface ISampleService
   {
-    Task<string> GetMessageAsync ();
+    Task<SampleModel> GetMessageAsync ();
   }
 }

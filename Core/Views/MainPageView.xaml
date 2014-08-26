@@ -5,8 +5,8 @@
   
   <StackLayout>
 
-    <StackLayout>
-      <localControls:ImageButton Command="{Binding RefreshCommand}" ImagePath="refresh" ImageHeightRequest="50" ImageWidthRequest="50" HorizontalOptions="End"/>
+    <StackLayout Padding="0,5,10,0">
+      <localControls:ImageButton Command="{Binding RefreshCommand}" ImagePath="refresh" ImageHeightRequest="60" ImageWidthRequest="60" HorizontalOptions="End"/>
     </StackLayout>
 
     <Label Text="{Binding Message}" VerticalOptions="Center" HorizontalOptions="Center" />
