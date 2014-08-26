@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
-
-namespace Core
+﻿namespace Core
 {
-	public partial class MainPage : ContentPage
+	public partial class MainPage
 	{
 		public MainPage ()
 		{
 			InitializeComponent ();
-			BindingContext = new MainPageViewModel ();
 		}
 	}
 }
-

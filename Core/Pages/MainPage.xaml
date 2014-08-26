@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:local="clr-namespace:Core;assembly=Core" x:Class="Core.MainPage">
+	<ContentPage.BindingContext>
+      <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+<StackLayout x:Name="stackLayout">
+	<local:ImageButton Image="refresh" BackgroundColor="Transparent" HorizontalOptions="End" ImageHeightRequest="80" ImageWidthRequest="80"/>
+   	<Label Text="{Binding Message}" Font="Bold, Large" VerticalOptions="Center" HorizontalOptions="Center" />
 	
-   <Label Text="{Binding Message}" Font="Bold, Large" VerticalOptions="Center" HorizontalOptions="Center" />
+	</StackLayout>
 </ContentPage>
