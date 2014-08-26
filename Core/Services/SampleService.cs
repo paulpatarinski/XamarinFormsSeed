@@ -1,14 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Services
 {
-	public interface ISampleService
-	{
-		Task<string> GetMessageAsync ();
-	}
-
-	public class SampleService : ISampleService
+  public class SampleService : ISampleService
 	{
 		public async Task<string> GetMessageAsync ()
 		{

@@ -1,29 +1,63 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Acr.XamForms.UserDialogs;
+using Core.Services;
+using Xamarin.Forms;
 
-namespace Core
+namespace Core.ViewModels
 {
-	public class MainPageViewModel : BaseViewModel
-	{
-		public MainPageViewModel () : this (new SampleService ())
-		{
-		}
+  public class MainPageViewModel : ViewModel
+  {
+    public MainPageViewModel(IUserDialogService dialogService, ISampleService sampleService)
+    {
+      _dialogService = dialogService;
+      _sampleService = sampleService;
 
-		public MainPageViewModel (ISampleService sampleService)
-		{
-			_sampleService = sampleService;
-			LoadDefaultMessageAsync ();
-		}
+      LoadDefaultMessageAsync();
+    }
 
-		readonly ISampleService _sampleService;
+    readonly IUserDialogService _dialogService;
+    readonly ISampleService _sampleService;
 
-		string _message;
+    string _message;
 
-		public string Message{ get { return _message; } set { ChangeAndNotify (ref _message, value); } }
+    public string Message { get { return _message; } set { SetProperty(ref _message, value); } }
 
-		public async Task LoadDefaultMessageAsync ()
-		{
-			Message = await _sampleService.GetMessageAsync ();
-		}
-	}
+    ICommand _refreshCommand;
+
+    public ICommand RefreshCommand
+    {
+      get
+      {
+        return _refreshCommand ?? (_refreshCommand = new Command(async () => await RefreshAsync()));
+      }
+    }
+
+    public async Task RefreshAsync()
+    {
+      var cancelSrc = new CancellationTokenSource();
+
+      using (var dlg = _dialogService.Loading("Loading"))
+      {
+        dlg.SetCancel(cancelSrc.Cancel);
+
+        try
+        {
+          await Task.Delay(TimeSpan.FromSeconds(5), cancelSrc.Token);
+        }
+        catch
+        {
+        }
+      }
+
+      Message = (cancelSrc.IsCancellationRequested ? "Loading Cancelled" : "Loading Complete");
+    }
+
+    public async Task LoadDefaultMessageAsync()
+    {
+      Message = await _sampleService.GetMessageAsync();
+    }
+  }
 }
-

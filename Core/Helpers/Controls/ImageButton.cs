@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Core.Helpers.Codes;
 using Xamarin.Forms;
 
-namespace Core
+namespace Core.Helpers.Controls
 {
 	public class ImageButton : Button
 	{
@@ -11,13 +11,13 @@ namespace Core
 		/// iOS: There should be an image in the Resources folder with a build action of BundleResource.
 		/// Windows Phone: There should be an image in the Images folder with a type of .png and build action set to resource.
 		/// </summary>
-		public static readonly BindableProperty ImageProperty =
+		public static readonly BindableProperty ImagePathProperty =
 			BindableProperty.Create<ImageButton, string> (
-				p => p.Image, default(string));
+				p => p.ImagePath, default(string));
 
-		public string Image {
-			get { return (string)GetValue (ImageProperty); }
-			set { SetValue (ImageProperty, value); }
+		public string ImagePath {
+			get { return (string)GetValue (ImagePathProperty); }
+			set { SetValue (ImagePathProperty, value); }
 		}
 
 		/// <summary>

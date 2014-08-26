@@ -1,5 +1,5 @@
 ﻿
-namespace Core
+namespace Core.Helpers.Codes
 {
 	/// <summary>
 	/// Specifies where the image will occur relative to the text on a

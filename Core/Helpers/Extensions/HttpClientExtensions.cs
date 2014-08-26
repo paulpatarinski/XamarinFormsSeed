@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Core.Helpers
+namespace Core.Helpers.Extensions
 {
 	public static class HttpClientExtensions
 	{

@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Acr.XamForms.UserDialogs.WindowsPhone;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WinPhone.Resources;
@@ -18,9 +19,9 @@ namespace WinPhone
     public MainPage()
     {
       InitializeComponent();
-      
-      Forms.Init();
 
+      Forms.Init();
+      new UserDialogService();
 
       Content = Core.App.GetMainPage().ConvertPageToUIElement(this);
 
