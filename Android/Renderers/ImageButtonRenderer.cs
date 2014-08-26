@@ -7,7 +7,7 @@ using Android;
 using Core;
 using System.Linq;
 
-[assembly: ExportRenderer (typeof(ImageButton), typeof(ImageButtonRenderer))]
+[assembly: ExportRenderer (typeof(Core.Helpers.Controls.ImageButton), typeof(ImageButtonRenderer))]
 namespace Android
 {
 	/// <summary>
@@ -17,7 +17,7 @@ namespace Android
 	public class ImageButtonRenderer : ButtonRenderer
 	{
 
-		private Core.ImageButton ImageButton { get { return (ImageButton)Element; } }
+		private Core.Helpers.Controls.ImageButton ImageButton { get { return (Core.Helpers.Controls.ImageButton)Element; } }
 
 		protected override void OnElementChanged (ElementChangedEventArgs<Button> e)
 		{
@@ -26,7 +26,7 @@ namespace Android
 			if (e.OldElement == null) {
 				var targetButton = (Android.Widget.Button)Control;
 
-				if (Element != null && !string.IsNullOrEmpty (this.ImageButton.Image)) {
+				if (Element != null && !string.IsNullOrEmpty (this.ImageButton.ImagePath)) {
 
 					SetImageSource (targetButton, this.ImageButton);
 				}
@@ -38,13 +38,13 @@ namespace Android
 		/// </summary>
 		/// <param name="targetButton">The target button.</param>
 		/// <param name="model">The model.</param>
-		private void SetImageSource (Android.Widget.Button targetButton, ImageButton model)
+		private void SetImageSource (Android.Widget.Button targetButton, Core.Helpers.Controls.ImageButton model)
 		{
 			var packageName = Context.PackageName;
 			const int padding = 10;
 			const string resourceType = "drawable";
 
-			var resId = Resources.GetIdentifier (model.Image, resourceType, packageName);
+			var resId = Resources.GetIdentifier (model.ImagePath, resourceType, packageName);
 			if (resId > 0) {
 				var scaledDrawable = GetScaleDrawableFromResourceId (resId, GetWidth (model.ImageWidthRequest),
 					                     GetHeight (model.ImageHeightRequest));
@@ -55,18 +55,18 @@ namespace Android
 				Drawable bottom = null;
 				targetButton.CompoundDrawablePadding = padding;
 				switch (model.Orientation) {
-				case (ImageOrientation.ImageToLeft):
+				case (Core.Helpers.Codes.ImageOrientation.ImageToLeft):
 					targetButton.Gravity = GravityFlags.Left | GravityFlags.CenterVertical;
 					left = scaledDrawable;
 					break;
-				case (ImageOrientation.ImageToRight):
+				case (Core.Helpers.Codes.ImageOrientation.ImageToRight):
 					targetButton.Gravity = GravityFlags.Right | GravityFlags.CenterVertical;
 					right = scaledDrawable;
 					break;
-				case (ImageOrientation.ImageOnTop):
+				case (Core.Helpers.Codes.ImageOrientation.ImageOnTop):
 					top = scaledDrawable;
 					break;
-				case (ImageOrientation.ImageOnBottom):
+				case (Core.Helpers.Codes.ImageOrientation.ImageOnBottom):
 					bottom = scaledDrawable;
 					break;
 				}
@@ -84,7 +84,7 @@ namespace Android
 		{
 			base.OnElementPropertyChanged (sender, e);
 
-			if (e.PropertyName == ImageButton.ImageProperty.PropertyName) {
+			if (e.PropertyName == Core.Helpers.Controls.ImageButton.ImagePathProperty.PropertyName) {
 				var targetButton = (Android.Widget.Button)Control;
 				SetImageSource (targetButton, this.ImageButton);
 			}
