@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Source from https://github.com/XForms/Xamarin-Forms-Labs 
+ */
+
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;

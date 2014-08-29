@@ -1,3 +1,7 @@
+/*
+ * Source from https://github.com/XForms/Xamarin-Forms-Labs 
+ */
+ 
 using Android.Graphics.Drawables;
 using Android.Views;
 using Xamarin.Forms;

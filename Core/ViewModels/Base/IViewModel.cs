@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿/*
+ * Source from https://github.com/aritchie/acr-xamarin-forms
+ */
+
+using System.ComponentModel;
 
 namespace Core.ViewModels
 {

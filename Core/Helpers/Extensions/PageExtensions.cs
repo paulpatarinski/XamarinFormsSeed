@@ -1,4 +1,8 @@
-﻿using Core.ViewModels;
+﻿/*
+ * Source from https://github.com/aritchie/acr-xamarin-forms
+ */
+
+using Core.ViewModels;
 using Xamarin.Forms;
 
 namespace Core.Helpers.Extensions

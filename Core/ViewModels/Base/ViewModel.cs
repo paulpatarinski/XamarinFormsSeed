@@ -1,4 +1,8 @@
-﻿namespace Core.ViewModels
+﻿/*
+ * Source from https://github.com/aritchie/acr-xamarin-forms
+ */
+
+namespace Core.ViewModels
 {
 	public abstract class ViewModel : AbstractNpcObject, IViewModel
 	{

@@ -1,4 +1,7 @@
-﻿
+﻿/*
+ * Source from https://github.com/XForms/Xamarin-Forms-Labs 
+ */
+
 namespace Core.Helpers.Codes
 {
 	/// <summary>

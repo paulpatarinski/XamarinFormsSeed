@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿/*
+ * Source from https://github.com/aritchie/acr-xamarin-forms
+ */
+
+using System.Linq;
 using System.Reflection;
 using Autofac;
 using Core.Helpers.Autofac;

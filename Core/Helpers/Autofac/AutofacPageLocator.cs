@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Source from https://github.com/aritchie/acr-xamarin-forms
+ */
+
+using System;
 using Autofac;
 using Core.ViewModels;
 using Xamarin.Forms;
