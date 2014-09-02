@@ -34,6 +34,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Services\ISampleService.cs" />
+    <Compile Include="ViewModels\Base\AbstractNpcProject.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
@@ -51,7 +52,6 @@
     <Compile Include="Helpers\Autofac\PageLocator.cs" />
     <Compile Include="Helpers\Extensions\PageExtensions.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
-    <Compile Include="ViewModels\Base\AbstractNpcObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
