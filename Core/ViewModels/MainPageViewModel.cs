@@ -9,9 +9,9 @@ namespace Core.ViewModels
 {
   public class MainPageViewModel : BaseViewModel
   {
-    public MainPageViewModel()
+    public MainPageViewModel(ISampleService sampleService)
     {
-      _sampleService = Resolver.Resolve<ISampleService>();
+      _sampleService = sampleService;
     }
 
     readonly ISampleService _sampleService;

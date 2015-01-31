@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Models\Colors.cs" />
+    <Compile Include="Helpers\Codes\Colors.cs" />
     <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Services\ISampleService.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
