@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-					   xmlns:pages="clr-namespace:Core.Pages;assembly=Core"
-					   x:Class="Core.Pages.MainPage">
-  <StackLayout>
-    <Label Text="{Binding Message}" VerticalOptions="Center" HorizontalOptions="Center" />
+               xmlns:base="clr-namespace:Core.Pages.Base;assembly=Core"
+               xmlns:models="clr-namespace:Core.Models;assembly=Core"
+               x:Class="Core.Pages.MainPage">
+  <StackLayout VerticalOptions="Fill" BackgroundColor="{x:Static models:Colors.Blue}">
+    <Label Text="{Binding Message}" VerticalOptions="Start" HorizontalOptions="Center" />
 
-    <Button Text="Load Server Data" VerticalOptions="End" HorizontalOptions="Center" Command="{Binding LoadMessageCommand}"/>
+    <Button Text="Load Server Data" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Command="{Binding LoadMessageCommand}"/>
   </StackLayout>
-</pages:BasePage>
+</base:BasePage>

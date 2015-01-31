@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using XLabs.Forms.Mvvm;
 
-namespace Core.ViewModels
+namespace Core.ViewModels.Base
 {
   public class BaseViewModel : ViewModel, INotifyPropertyChanged
   {

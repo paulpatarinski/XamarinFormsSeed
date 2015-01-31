@@ -1,7 +1,7 @@
-﻿using Core.ViewModels;
+﻿using Core.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace Core.Pages
+namespace Core.Pages.Base
 {
   public class BasePage : ContentPage
   {
