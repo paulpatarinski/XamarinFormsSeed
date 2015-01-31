@@ -23,7 +23,7 @@
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
-    <NuGetPackageImportStamp>b51f32bb</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>341741de</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -159,32 +159,49 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Acr.XamForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Acr.XamForms.1.2.0\lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Acr.XamForms.dll</HintPath>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.XamForms.UserDialogs, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.0\lib\wp8\Acr.XamForms.UserDialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.XamForms.UserDialogs.WindowsPhone">
-      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.0\lib\wp8\Acr.XamForms.UserDialogs.WindowsPhone.dll</HintPath>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Core, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\WP80\Xamarin.Forms.Core.dll</HintPath>
+    <Reference Include="WPControls">
+      <HintPath>..\packages\WPControls.1.5.2\lib\wp8\WPControls.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Platform.WP8, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.Forms.Core, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\WP80\Xamarin.Forms.Platform.WP8.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\WP80\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.Forms.Platform.WP8, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\WP80\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\WP80\Xamarin.Forms.Platform.WP8.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\WP80\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Core">
+      <HintPath>..\packages\XLabs.Core.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\packages\XLabs.Forms.2.0.0-pre91\lib\wp8\XLabs.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\packages\XLabs.IoC.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\packages\XLabs.Platform.2.0.0-pre91\lib\wp8\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform.WP8">
+      <HintPath>..\packages\XLabs.Platform.2.0.0-pre91\lib\wp8\XLabs.Platform.WP8.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\packages\XLabs.Serialization.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
@@ -197,11 +214,11 @@
   </Target>
   -->
   <ProjectExtensions />
-  <Import Project="..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
 </Project>

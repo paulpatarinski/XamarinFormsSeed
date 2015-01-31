@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Resources;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using Windows.Storage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WinPhone.Resources;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
 
 namespace WinPhone
 {
@@ -39,7 +43,7 @@ namespace WinPhone
       if (Debugger.IsAttached)
       {
         // Display the current frame rate counters.
-        Application.Current.Host.Settings.EnableFrameRateCounter = true;
+        Current.Host.Settings.EnableFrameRateCounter = false;
 
         // Show the areas of the app that are being redrawn in each frame.
         //Application.Current.Host.Settings.EnableRedrawRegions = true;
@@ -51,10 +55,11 @@ namespace WinPhone
         // Prevent the screen from turning off while under the debugger by disabling
         // the application's idle detection.
         // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
-        // and consume battery power when the user is not using the phone.
+        // and consume battery power when the user is not using the phone.  
         PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
       }
 
+      SetIoC();
     }
 
     // Code to execute when the application is launching (eg, from Start)
@@ -104,12 +109,12 @@ namespace WinPhone
     #region Phone application initialization
 
     // Avoid double-initialization
-    private bool phoneApplicationInitialized = false;
+    private bool _phoneApplicationInitialized = false;
 
     // Do not add any additional code to this method
     private void InitializePhoneApplication()
     {
-      if (phoneApplicationInitialized)
+      if (_phoneApplicationInitialized)
         return;
 
       // Create the frame but don't set it as RootVisual yet; this allows the splash
@@ -124,7 +129,7 @@ namespace WinPhone
       RootFrame.Navigated += CheckForResetNavigation;
 
       // Ensure we don't initialize again
-      phoneApplicationInitialized = true;
+      _phoneApplicationInitialized = true;
     }
 
     // Do not add any additional code to this method
@@ -201,7 +206,8 @@ namespace WinPhone
         //
         // If a compiler error is hit then ResourceFlowDirection is missing from
         // the resource file.
-        FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
+        FlowDirection flow =
+          (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
         RootFrame.FlowDirection = flow;
       }
       catch
@@ -210,7 +216,6 @@ namespace WinPhone
         // ResourceLangauge not being correctly set to a supported language
         // code or ResourceFlowDirection is set to a value other than LeftToRight
         // or RightToLeft.
-
         if (Debugger.IsAttached)
         {
           Debugger.Break();
@@ -218,6 +223,38 @@ namespace WinPhone
 
         throw;
       }
+    }
+
+    /// <summary>
+    /// Sets Inversion of Control.
+    /// </summary>
+    private void SetIoC()
+    {
+      var resolverContainer = new SimpleContainer();
+
+      var app = new XFormsApp<Application>();
+
+      app.Init(this);
+
+      resolverContainer.Register<IDevice>(t => WindowsPhoneDevice.CurrentDevice)
+        .Register<IDisplay>(t => t.Resolve<IDevice>().Display)
+        .Register<IDependencyContainer>(t => resolverContainer)
+        .Register<IXFormsApp>(app);
+
+      Resolver.SetResolver(resolverContainer.GetResolver());
+    }
+
+    /// <summary>
+    /// Gets the path for file asynchronous.
+    /// </summary>
+    /// <param name="file">The file.</param>
+    /// <returns></returns>
+    private async Task<string> GetPathForFileAsync(string file)
+    {
+      var storageFile =
+        await ApplicationData.Current.LocalFolder.CreateFileAsync(file, CreationCollisionOption.OpenIfExists);
+
+      return storageFile.Path;
     }
   }
 }

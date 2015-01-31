@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Acr.XamForms.UserDialogs.WindowsPhone;
+﻿using System.Threading;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using WinPhone.Resources;
 using Xamarin.Forms;
+using NavigationEventArgs = System.Windows.Navigation.NavigationEventArgs;
 
 namespace WinPhone
 {
@@ -19,13 +11,12 @@ namespace WinPhone
     public MainPage()
     {
       InitializeComponent();
-
-      Forms.Init();
-      new UserDialogService();
-
-      Content = Core.App.GetMainPage().ConvertPageToUIElement(this);
-
       // Sample code to localize the ApplicationBar
+      Forms.Init();
+
+      Core.App.Init();
+      Thread.Sleep(2000);
+      Content = Core.App.GetMainPage().ConvertPageToUIElement(this);
       //BuildLocalizedApplicationBar();
     }
 

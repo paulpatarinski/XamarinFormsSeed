@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -16,6 +16,7 @@
     <AssemblyName>ThatConfXamarin.Android</AssemblyName>
     <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <NuGetPackageImportStamp>598de9e4</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,30 +40,53 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.Android">
-      <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\packages\Xamarin.Android.Support.v4.20.0.0.3\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
+    <Reference Include="XLabs.Core">
+      <HintPath>..\packages\XLabs.Core.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.XamForms.UserDialogs">
-      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.0\lib\MonoAndroid\Acr.XamForms.UserDialogs.dll</HintPath>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\packages\XLabs.Forms.2.0.0-pre91\lib\MonoAndroid\XLabs.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.XamForms.UserDialogs.Droid">
-      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.0\lib\MonoAndroid\Acr.XamForms.UserDialogs.Droid.dll</HintPath>
+    <Reference Include="XLabs.Forms.Droid">
+      <HintPath>..\packages\XLabs.Forms.2.0.0-pre91\lib\MonoAndroid\XLabs.Forms.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="AndHUD">
-      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.0\lib\MonoAndroid\AndHUD.dll</HintPath>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\packages\XLabs.IoC.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\packages\XLabs.Platform.2.0.0-pre91\lib\MonoAndroid\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform.Droid">
+      <HintPath>..\packages\XLabs.Platform.2.0.0-pre91\lib\MonoAndroid\XLabs.Platform.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\packages\XLabs.Serialization.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,13 +94,13 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\ImageButtonRenderer.cs" />
-    <Compile Include="Bootstrap\UserDialogsBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -85,15 +109,18 @@
     <AndroidResource Include="Resources\drawable\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <Import Project="..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{8DB2323E-F8F6-4E16-B548-CF477111747D}</Project>
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Renderers\" />
-    <Folder Include="Bootstrap\" />
-  </ItemGroup>
+  <ItemGroup />
+  <Import Project="..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
 </Project>

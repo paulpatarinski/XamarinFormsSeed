@@ -10,7 +10,7 @@
     <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
-    <NuGetPackageImportStamp>6f3a0ec3</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>0ddab425</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,56 +34,61 @@
     <Compile Include="App.cs" />
     <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Services\ISampleService.cs" />
-    <Compile Include="ViewModels\Base\AbstractNpcProject.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="Views\MainPageView.xaml.cs">
-      <DependentUpon>MainPageView.xaml</DependentUpon>
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Extensions\HttpClientExtensions.cs" />
-    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Services\SampleService.cs" />
     <Compile Include="Helpers\Controls\ImageButton.cs" />
     <Compile Include="Helpers\Codes\ImageOrientation.cs" />
-    <Compile Include="ViewModels\Base\IViewModel.cs" />
-    <Compile Include="Helpers\Autofac\IPageLocator.cs" />
-    <Compile Include="Helpers\Extensions\ContainerBuilderExtensions.cs" />
-    <Compile Include="Helpers\Autofac\AutofacPageLocator.cs" />
-    <Compile Include="Helpers\Autofac\PageLocator.cs" />
-    <Compile Include="Helpers\Extensions\PageExtensions.cs" />
-    <Compile Include="ViewModels\Base\ViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="Acr.XamForms">
-      <HintPath>..\packages\Acr.XamForms.1.2.0\lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Acr.XamForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.XamForms.UserDialogs">
-      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.0\lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Acr.XamForms.UserDialogs.dll</HintPath>
-    </Reference>
     <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.5.0\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
     <Reference Include="ModernHttpClient">
-      <HintPath>..\packages\modernhttpclient.2.0.1\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+      <HintPath>..\packages\modernhttpclient.2.1.5\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.1.3.1.6296\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Core">
+      <HintPath>..\packages\XLabs.Core.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\packages\XLabs.Forms.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\packages\XLabs.IoC.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\packages\XLabs.Platform.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\packages\XLabs.Serialization.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,16 +96,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Views\MainPageView.xaml">
+    <EmbeddedResource Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
 </Project>

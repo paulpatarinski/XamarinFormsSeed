@@ -6,7 +6,7 @@ namespace Core.Services
 {
   public class SampleService : ISampleService
   {
-    public async Task<SampleModel> GetMessageAsync()
+    public async Task<SampleModel> LoadMessageAsync()
     {
       var sampleModel = new SampleModel();
 

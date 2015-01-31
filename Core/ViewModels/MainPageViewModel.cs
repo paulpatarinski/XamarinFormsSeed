@@ -1,52 +1,47 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using Acr.XamForms.UserDialogs;
 using Core.Services;
 using Xamarin.Forms;
+using XLabs.Ioc;
 
 namespace Core.ViewModels
 {
-  public class MainPageViewModel : ViewModel
+  public class MainPageViewModel : BaseViewModel
   {
-    public MainPageViewModel(IUserDialogService dialogService, ISampleService sampleService)
+    public MainPageViewModel()
     {
-      _dialogService = dialogService;
-      _sampleService = sampleService;
-
-      LoadMessageAsync();
+      _sampleService = Resolver.Resolve<ISampleService>();
     }
 
-    readonly IUserDialogService _dialogService;
     readonly ISampleService _sampleService;
 
     string _message;
 
-    public string Message { get { return _message; } set { SetProperty(ref _message, value); } }
+    public string Message
+    {
+      get { return _message; }
+      set { SetField(ref _message, value); }
+    }
 
     ICommand _refreshCommand;
 
-    public ICommand RefreshCommand
+    public ICommand LoadMessageCommand
     {
       get
       {
-        return _refreshCommand ?? (_refreshCommand = new Command(async () => await RefreshAsync()));
+        return _refreshCommand ?? (_refreshCommand = new Command(async () => await ExecuteLoadMessageAsync()));
       }
     }
 
-    public async Task RefreshAsync()
+    public async Task ExecuteLoadMessageAsync()
     {
-      await LoadMessageAsync();
-    }
+      IsBusy = true;
 
-    public async Task LoadMessageAsync()
-    {
-      _dialogService.ShowLoading("Getting data from Server...");
+      var result = await _sampleService.LoadMessageAsync();
 
-      var model =  await _sampleService.GetMessageAsync();
+      Message = result.Message;
 
-      _dialogService.HideLoading();
-
-      Message = model.Message;
+      IsBusy = false;
     }
   }
 }

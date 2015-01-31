@@ -1,52 +1,73 @@
-﻿using System.Reflection;
-using Acr.XamForms.UserDialogs;
-using Autofac;
-using Core.Helpers.Autofac;
-using Core.Helpers.Extensions;
+﻿using System.Diagnostics;
+using Core.Pages;
+using Core.Services;
 using Core.ViewModels;
 using Xamarin.Forms;
+using XLabs.Forms.Controls;
+using XLabs.Forms.Mvvm;
+using XLabs.Ioc;
+using XLabs.Platform.Mvvm;
 
 namespace Core
 {
-  public static class App
+  public class App : Application
   {
-    public static IContainer Container { get; private set; }
-
-    private static INavigation _navigator;
-
-    public static void Init()
+    public App()
     {
-      if (Container != null)
-        return;
-
-      //This call registers all ViewModels, Views, Services and any XamDependecies
-      Container = new ContainerBuilder()
-        .RegisterMvvmComponents(typeof (App).GetTypeInfo().Assembly)
-        .RegisterServices(typeof(App).GetTypeInfo().Assembly)
-        .RegisterXamDependency<IUserDialogService>()
-        .Build();
+      Init();
+      MainPage = GetMainPage();
     }
 
     public static Page GetMainPage()
     {
-      Init();
+      ViewFactory.Register<MainPage, MainPageViewModel>();
 
-      var page = new NavigationPage();
+      RegisterServices();
 
-      _navigator = page.Navigation;
+      var mainTab = new ExtendedTabbedPage()
+      {
+        Title = "Xamarin Forms Labs",
+        SwipeEnabled = true,
+        TintColor = Color.White,
+        BarTintColor = Color.Blue,
+        Badges = { "1", "2", "3" },
+        TabBarBackgroundImage = "ToolbarGradient2.png",
+        TabBarSelectedImage = "blackbackground.png",
+      };
 
-      NavigateTo<MainPageViewModel>();
+      var mainPage = new NavigationPage(mainTab);
 
-      return page;
+      var mvvm = ViewFactory.CreatePage<MainPageViewModel, Page>();
+
+      mainTab.Children.Add(mvvm as Page);
+      return mainPage;
     }
 
-    public static void NavigateTo<T>(object args = null) where T : IViewModel
+    private static void RegisterServices()
     {
-      var page = Container
-        .Resolve<IPageLocator>()
-        .ResolvePageAndViewModel(typeof (T), args);
+      var depedencyContainer = Resolver.Resolve<IDependencyContainer>();
 
-      _navigator.PushAsync(page);
+      depedencyContainer.Register<ISampleService, SampleService>();
+    }
+
+    /// <summary>
+    /// Initializes the application.
+    /// </summary>
+    public static void Init()
+    {
+      var app = Resolver.Resolve<IXFormsApp>();
+      if (app == null)
+      {
+        return;
+      }
+
+      app.Closing += (o, e) => Debug.WriteLine("Application Closing");
+      app.Error += (o, e) => Debug.WriteLine("Application Error");
+      app.Initialize += (o, e) => Debug.WriteLine("Application Initialized");
+      app.Resumed += (o, e) => Debug.WriteLine("Application Resumed");
+      app.Rotation += (o, e) => Debug.WriteLine("Application Rotated");
+      app.Startup += (o, e) => Debug.WriteLine("Application Startup");
+      app.Suspended += (o, e) => Debug.WriteLine("Application Suspended");
     }
   }
 }
