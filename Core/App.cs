@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
+using Autofac;
 using Core.Pages;
-using Core.Services;
 using Core.ViewModels;
 using Xamarin.Forms;
-using XLabs.Forms.Controls;
 using XLabs.Forms.Mvvm;
 using XLabs.Ioc;
 using XLabs.Platform.Mvvm;
@@ -22,8 +22,6 @@ namespace Core
     {
       ViewFactory.Register<MainPage, MainPageViewModel>();
 
-      RegisterServices();
-
       var landingPage = (Page)ViewFactory.CreatePage<MainPageViewModel, MainPage>();
 
       var mainNavigationPage = new NavigationPage(landingPage);
@@ -31,11 +29,16 @@ namespace Core
       return mainNavigationPage;
     }
 
-    private static void RegisterServices()
+    public static void RegisterCoreComponents(ContainerBuilder containerBuilder)
     {
-      var depedencyContainer = Resolver.Resolve<IDependencyContainer>();
+      var assemblies = new[]
+      {
+        typeof (App).GetTypeInfo().Assembly
+      };
 
-      depedencyContainer.Register<ISampleService, SampleService>();
+      containerBuilder.RegisterAssemblyTypes(assemblies)
+        .Where(clss => clss.Name.EndsWith("Service"))
+        .AsImplementedInterfaces();
     }
 
     /// <summary>
@@ -44,6 +47,7 @@ namespace Core
     public static void Init()
     {
       var app = Resolver.Resolve<IXFormsApp>();
+
       if (app == null)
       {
         return;

@@ -11,7 +11,7 @@ namespace Core.Services
       var sampleModel = new SampleModel();
 
       //TODO: Do long task here (HTTP call)
-      await Task.Delay(TimeSpan.FromSeconds(5));
+      await Task.Delay(TimeSpan.FromSeconds(2));
 
       sampleModel.Message = "Hello from the Sample Service.";
 

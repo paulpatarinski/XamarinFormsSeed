@@ -85,6 +85,9 @@
     <Reference Include="XLabs.Ioc">
       <HintPath>..\packages\XLabs.IoC.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
     </Reference>
+    <Reference Include="XLabs.Ioc.Autofac">
+      <HintPath>..\packages\XLabs.IoC.Autofac.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="XLabs.Platform">
       <HintPath>..\packages\XLabs.Platform.2.0.0-pre91\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Platform.dll</HintPath>
     </Reference>

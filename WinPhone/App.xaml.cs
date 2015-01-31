@@ -5,10 +5,12 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
 using Windows.Storage;
+using Autofac;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WinPhone.Resources;
 using XLabs.Ioc;
+using XLabs.Ioc.Autofac;
 using XLabs.Platform.Device;
 using XLabs.Platform.Mvvm;
 
@@ -230,18 +232,19 @@ namespace WinPhone
     /// </summary>
     private void SetIoC()
     {
-      var resolverContainer = new SimpleContainer();
+      var nativeApplication = new XFormsApp<Application>();
+      nativeApplication.Init(this);
 
-      var app = new XFormsApp<Application>();
+      var containerBuilder = new ContainerBuilder();
 
-      app.Init(this);
+      containerBuilder.Register(c => WindowsPhoneDevice.CurrentDevice).As<IDevice>();
+      containerBuilder.Register(c => nativeApplication).As<IXFormsApp>();
+      Core.App.RegisterCoreComponents(containerBuilder);
 
-      resolverContainer.Register<IDevice>(t => WindowsPhoneDevice.CurrentDevice)
-        .Register<IDisplay>(t => t.Resolve<IDevice>().Display)
-        .Register<IDependencyContainer>(t => resolverContainer)
-        .Register<IXFormsApp>(app);
+      var autofacContainer = new AutofacContainer(containerBuilder.Build());
+      autofacContainer.Register<IDependencyContainer>(autofacContainer);
 
-      Resolver.SetResolver(resolverContainer.GetResolver());
+      Resolver.SetResolver(autofacContainer.GetResolver());
     }
 
     /// <summary>
