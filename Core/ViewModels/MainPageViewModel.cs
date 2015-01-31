@@ -3,7 +3,6 @@ using System.Windows.Input;
 using Core.Services;
 using Core.ViewModels.Base;
 using Xamarin.Forms;
-using XLabs.Ioc;
 
 namespace Core.ViewModels
 {
