@@ -24,23 +24,11 @@ namespace Core
 
       RegisterServices();
 
-      var mainTab = new ExtendedTabbedPage()
-      {
-        Title = "Xamarin Forms Labs",
-        SwipeEnabled = true,
-        TintColor = Color.White,
-        BarTintColor = Color.Blue,
-        Badges = { "1", "2", "3" },
-        TabBarBackgroundImage = "ToolbarGradient2.png",
-        TabBarSelectedImage = "blackbackground.png",
-      };
+      var landingPage = (Page)ViewFactory.CreatePage<MainPageViewModel, MainPage>();
 
-      var mainPage = new NavigationPage(mainTab);
+      var mainNavigationPage = new NavigationPage(landingPage);
 
-      var mvvm = ViewFactory.CreatePage<MainPageViewModel, Page>();
-
-      mainTab.Children.Add(mvvm as Page);
-      return mainPage;
+      return mainNavigationPage;
     }
 
     private static void RegisterServices()
